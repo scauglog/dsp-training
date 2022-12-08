@@ -1,4 +1,5 @@
 import os
+import mlflow
 from datetime import datetime
 import logging
 
@@ -24,7 +25,9 @@ def main():
     #  src/constants/files.py puis lancez un run MlFlow dont le nom est la date du jour en remplaçant
     #  NotImplementedError par la méthode MlFlow appropriée.
     #  N’oubliez pas d’importer le package et de l’ajouter dans les requirements.
-    with NotImplementedError():
+    #with NotImplementedError():
+    mlflow.set_experiment(files.MLFLOW_EXPERIMENT_NAME)
+    with mlflow.start_run(run_name=today_str):
         logging.info("*********** 1/5 Loading and splitting data ***********")
         load_and_split_data(raw_data_path=files.LOANS,
                             training_file_path=files.TRAIN,

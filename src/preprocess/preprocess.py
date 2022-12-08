@@ -63,6 +63,7 @@ def preprocess(training_file_path, preprocessed_train_path, preprocessing_pipeli
     logging.info("Saving the preprocessing pipeline")
     # TODO 2 : sauvegarder le pipeline de preprocessing avec mlflow. Un input de la fonction preprocess pourra vous
     #  être utile...
+    mlflow.sklearn.log_model(pipeline, preprocessing_pipeline_name)
 
 
 def fit_preprocessing_pipeline(train_df, num_features, cat_features):
